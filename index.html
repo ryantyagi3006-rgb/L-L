@@ -1,0 +1,197 @@
+
+<style>
+  h2.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+  .wrap { padding: 1.5rem 0; }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+  .filter-btn { font-size: 13px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); color: var(--color-text-secondary); cursor: pointer; transition: all 0.15s; }
+  .filter-btn.active { color: white; border-color: transparent; }
+  .filter-btn[data-cat="all"].active { background: #534AB7; }
+  .filter-btn[data-cat="loaded"].active { background: #D85A30; }
+  .filter-btn[data-cat="euphemism"].active { background: #0F6E56; }
+  .filter-btn[data-cat="imagery"].active { background: #185FA5; }
+  .filter-btn[data-cat="symbolism"].active { background: #854F0B; }
+  .filter-btn[data-cat="structure"].active { background: #993556; }
+  .excerpt { font-family: var(--font-serif); font-size: 16px; line-height: 2; color: var(--color-text-primary); background: var(--color-background-secondary); border-radius: var(--border-radius-lg); padding: 1.5rem; margin-bottom: 1.5rem; }
+  .tag { border-radius: 3px; padding: 1px 3px; cursor: pointer; transition: opacity 0.2s; border-bottom: 2px solid transparent; }
+  .tag[data-cat="loaded"] { background: #FAECE7; color: #712B13; border-bottom-color: #D85A30; }
+  .tag[data-cat="euphemism"] { background: #E1F5EE; color: #085041; border-bottom-color: #0F6E56; }
+  .tag[data-cat="imagery"] { background: #E6F1FB; color: #0C447C; border-bottom-color: #185FA5; }
+  .tag[data-cat="symbolism"] { background: #FAEEDA; color: #633806; border-bottom-color: #854F0B; }
+  .tag[data-cat="structure"] { background: #FBEAF0; color: #72243E; border-bottom-color: #993556; }
+  .tag.dimmed { opacity: 0.2; }
+  .panel { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; background: var(--color-background-primary); min-height: 90px; }
+  .panel-label { font-size: 12px; color: var(--color-text-tertiary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .panel-technique { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 6px; }
+  .panel-quote { font-family: var(--font-serif); font-size: 13px; color: var(--color-text-secondary); font-style: italic; margin-bottom: 8px; }
+  .panel-body { font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; }
+  .panel-unit { font-size: 13px; color: #534AB7; margin-top: 8px; border-left: 2px solid #AFA9EC; padding-left: 8px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--color-text-secondary); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+  .hint { font-size: 13px; color: var(--color-text-tertiary); margin-bottom: 1rem; }
+</style>
+
+<div class="wrap">
+  <h2 class="sr-only">Interactive annotation tool for the opening paragraph of 1984 by George Orwell — click highlighted phrases to reveal technique analysis.</h2>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-cat="all">All techniques</button>
+    <button class="filter-btn" data-cat="loaded">Loaded language</button>
+    <button class="filter-btn" data-cat="euphemism">Euphemism / irony</button>
+    <button class="filter-btn" data-cat="imagery">Imagery</button>
+    <button class="filter-btn" data-cat="symbolism">Symbolism</button>
+    <button class="filter-btn" data-cat="structure">Structure</button>
+  </div>
+
+  <p class="hint">Click any highlighted phrase to analyse it.</p>
+
+  <div class="excerpt" id="excerpt">
+    It was a <span class="tag" data-cat="symbolism" data-key="brightcold">"bright cold day in April"</span>, and the clocks were <span class="tag" data-cat="symbolism" data-key="thirteen">"striking thirteen"</span>. <span class="tag" data-cat="symbolism" data-key="winston">Winston Smith</span>, his chin nuzzled into his breast in an effort to escape the <span class="tag" data-cat="loaded" data-key="vile">"vile wind"</span>, slipped quickly through the glass doors of <span class="tag" data-cat="euphemism" data-key="victory">Victory Mansions</span>, though not quickly enough to prevent a swirl of <span class="tag" data-cat="imagery" data-key="gritty">"gritty dust"</span> from entering along with him. The hallway <span class="tag" data-cat="imagery" data-key="cabbage">"smelt of boiled cabbage and old rag mats"</span>. At one end of it a coloured poster, <span class="tag" data-cat="structure" data-key="toolarge">"too large for the interior"</span>, was tacked to the wall. It depicted simply an <span class="tag" data-cat="symbolism" data-key="enormous">"enormous face"</span>, more than a metre wide: the face of a man of about forty-five, with a <span class="tag" data-cat="loaded" data-key="handsome">"heavy black moustache and ruggedly handsome features"</span>. Winston made his way up the staircase. It was <span class="tag" data-cat="structure" data-key="nouse">"no use trying the lift"</span>. Even at the best of times it was <span class="tag" data-cat="structure" data-key="seldom">"seldom working"</span>, and at present the electric current was cut off during daylight hours. It was part of the economy drive in preparation for <span class="tag" data-cat="euphemism" data-key="hateweek">Hate Week</span>. The flat was seven flights up, and Winston, who was <span class="tag" data-cat="imagery" data-key="ulcer">"thirty-nine and had a varicose ulcer above his right ankle"</span>, went <span class="tag" data-cat="structure" data-key="slowly">"slowly"</span>.
+  </div>
+
+  <div class="panel" id="panel">
+    <div class="panel-label">Annotation</div>
+    <div class="panel-body" style="color: var(--color-text-tertiary); font-style: italic;">Select a highlighted phrase above to see its analysis.</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#F0997B;"></div>Loaded language</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#5DCAA5;"></div>Euphemism / irony</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#85B7EB;"></div>Imagery</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#FAC775;"></div>Symbolism</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ED93B1;"></div>Structure</div>
+  </div>
+</div>
+
+<script>
+const annotations = {
+  brightcold: {
+    technique: "Juxtaposition",
+    quote: '"bright cold day in April"',
+    body: "The warmth of brightness is immediately undercut by cold, establishing a world where language promises comfort but delivers hostility. April traditionally signals renewal; the cold subverts that expectation from the first sentence.",
+    unit: "Connects to framing — Orwell frames the world as one where surface language and lived reality are always in tension, mirroring how propaganda functions."
+  },
+  thirteen: {
+    technique: "Defamiliarisation",
+    quote: '"striking thirteen"',
+    body: "Thirteen is not a natural hour. Its casual mention signals that reality has been restructured by the Party and that citizens have been conditioned to accept the unnatural without question.",
+    unit: "Directly supports the Sapir-Whorf hypothesis — the language of time has been altered, and with it, the cognitive reality of Oceania's citizens."
+  },
+  winston: {
+    technique: "Symbolic naming",
+    quote: "Winston Smith",
+    body: "Winston evokes Churchill — freedom and resistance. Smith is the most common English surname, making him an everyman. The tension between heroic name and ordinary identity is embedded before he speaks a word.",
+    unit: "Connects to identity formation — Winston's name encodes the conflict between individual agency and collective subjugation that drives the novel."
+  },
+  vile: {
+    technique: "Loaded language",
+    quote: '"vile wind"',
+    body: "Vile carries strong moral and emotional weight far beyond a neutral descriptor like cold or sharp. It positions the physical environment as an extension of political oppression.",
+    unit: "A direct example of loaded language as defined in unit key terms — word choice that generates emotional response and shapes the reader's perception of the world."
+  },
+  victory: {
+    technique: "Euphemism and irony",
+    quote: "Victory Mansions",
+    body: "A propagandistic name that promises grandeur and triumph. The reality — gritty dust, broken lifts, boiled cabbage — exposes the gap between the Party's language and material truth.",
+    unit: "A textbook example of euphemism working alongside doublespeak, showing how power uses language to disguise rather than describe reality."
+  },
+  gritty: {
+    technique: "Tactile imagery",
+    quote: '"gritty dust"',
+    body: "The texture of gritty makes the decay physical and immediate. Readers feel the environment rather than simply observing it, grounding political horror in bodily experience.",
+    unit: "Connects to the unit's exploration of how language operates on the body as well as the mind — power is felt, not just understood."
+  },
+  cabbage: {
+    technique: "Olfactory imagery",
+    quote: '"smelt of boiled cabbage and old rag mats"',
+    body: "Smell is the most visceral and memory-linked sense. Orwell uses it to make poverty and decay impossible to intellectualise — the reader is drawn into the degradation physically.",
+    unit: "Supports the argument that language shapes perception at a sensory level, connecting to Boroditsky's claim that language reaches into even basic perceptual experience."
+  },
+  toolarge: {
+    technique: "Deliberate disproportionality",
+    quote: '"too large for the interior"',
+    body: "The poster's scale is not accidental. It physically overwhelms the private space of the hallway, representing how the Party's power leaves no room for individual identity or refuge.",
+    unit: "Connects to hegemony — dominant power does not simply exist alongside individuals, it crowds out the space in which resistance might form."
+  },
+  enormous: {
+    technique: "Scale as power",
+    quote: '"enormous face"',
+    body: "Size functions as a visual metaphor for authority. The face does not need to speak — its scale alone communicates dominance and demands submission.",
+    unit: "Links to the bias video's discussion of placement and size — what is made large is made important, and importance is itself a form of power."
+  },
+  handsome: {
+    technique: "Propaganda aesthetics",
+    quote: '"heavy black moustache and ruggedly handsome features"',
+    body: "The description constructs an idealised physical image designed to generate admiration and compliance. Beauty is recruited into the service of authority.",
+    unit: "A direct example of how bias operates through images — the Party selects and constructs a visual that manufactures consent rather than reflects truth."
+  },
+  nouse: {
+    technique: "Understated resignation",
+    quote: '"no use trying the lift"',
+    body: "The flat resignation of this phrase reveals a population that has stopped expecting things to work. The normalisation of failure lowers expectations so thoroughly that resistance feels pointless before it begins.",
+    unit: "Connects to personal efficacy and agency — when language and environment conspire to make failure feel natural, the capacity for resistance is eroded."
+  },
+  seldom: {
+    technique: "Cumulative decay",
+    quote: '"seldom working"',
+    body: "The repeated emphasis on things failing builds a picture of a society in quiet collapse — one the Party's triumphant language actively conceals. The gap between discourse and reality widens with each detail.",
+    unit: "Reinforces the statement of inquiry — the Party's language gains power precisely by disconnecting from the reality it claims to describe."
+  },
+  hateweek: {
+    technique: "Doublespeak",
+    quote: "Hate Week",
+    body: "An institutionalised event whose name openly celebrates a destructive emotion. The Party has inverted moral language so completely that hatred is not hidden but presented as civic duty and collective participation.",
+    unit: "The clearest example of doublespeak in the excerpt — directly connecting to ideology and how dominant groups normalise values that serve their power."
+  },
+  ulcer: {
+    technique: "Physical vulnerability",
+    quote: '"thirty-nine and had a varicose ulcer above his right ankle"',
+    body: "The specificity of age and ailment humanises Winston while marking him as already worn down. Power here operates on the body — Winston bears its marks before the novel's conflict has even begun.",
+    unit: "Connects to the global context strand on physical and psychological development — the body becomes a site where power is inscribed and resistance is made harder."
+  },
+  slowly: {
+    technique: "Adverbial weight",
+    quote: '"slowly"',
+    body: "A single word that closes the paragraph with quiet devastation. It requires no drama because everything before it has already done the work — a man, and a society, exhausted into submission.",
+    unit: "Connects to resistance — or rather its absence. The pace of slowly suggests a person for whom resistance has not yet formed a shape, making it the perfect opening note for a novel about the cost of finding one's agency."
+  }
+};
+
+const catColors = {
+  loaded: '#D85A30', euphemism: '#0F6E56', imagery: '#185FA5', symbolism: '#854F0B', structure: '#993556'
+};
+
+let activeFilter = 'all';
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    activeFilter = btn.dataset.cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tag').forEach(tag => {
+      if (activeFilter === 'all' || tag.dataset.cat === activeFilter) {
+        tag.classList.remove('dimmed');
+      } else {
+        tag.classList.add('dimmed');
+      }
+    });
+  });
+});
+
+document.querySelectorAll('.tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    const key = tag.dataset.key;
+    const cat = tag.dataset.cat;
+    const a = annotations[key];
+    if (!a) return;
+    const color = catColors[cat] || '#534AB7';
+    document.getElementById('panel').innerHTML = `
+      <div class="panel-label">${tag.dataset.cat.charAt(0).toUpperCase() + tag.dataset.cat.slice(1)}</div>
+      <div class="panel-technique" style="color:${color}">${a.technique}</div>
+      <div class="panel-quote">${a.quote}</div>
+      <div class="panel-body">${a.body}</div>
+      <div class="panel-unit">${a.unit}</div>
+    `;
+  });
+});
+</script>
